@@ -14,15 +14,23 @@ class Hhennes_ProductGridFilter_Model_Observer {
         if (!isset($block))
             return;
 
+        if (!Mage::getStoreConfig('system/hhennes_productgridfilter/attributes_to_display'))
+            return;
+
         //Si le block correspond à la grid d'affichage des produits  
         if ($block->getType() == 'adminhtml/catalog_product_grid') {
 
-            //On ajoute un nouveau champ "Reference" après le champ SKU
-            $block->addColumnAfter('reference', array(//Le champ reference peu être remplacé par l'attribut existant de votre choix
-                'header' => Mage::helper('hhennes_productgridfilter')->__('Reference interne'),
-                'align' => 'left',
-                'index' => 'reference',
-                'width' => '70'), 'sku'); // Idem sku peut etre remplacé par n'importe quel élément de votre grid
+            $fields = explode(',', Mage::getStoreConfig('system/hhennes_productgridfilter/attributes_to_display'));
+            
+            foreach ($fields as $field) {
+                
+                //On ajoute les nouveaux champs après le champ SKU
+                $block->addColumnAfter($field, array(
+                    'header' => Mage::helper('hhennes_productgridfilter')->__($field),
+                    'align' => 'left',
+                    'index' => $field,
+                    'width' => '70'), 'sku'); //sku peut etre remplacé par n'importe quel élément de votre grid
+            }
         }
     }
 
@@ -37,10 +45,17 @@ class Hhennes_ProductGridFilter_Model_Observer {
 
         if (!isset($collection))
             return;
+        
+        if (!Mage::getStoreConfig('system/hhennes_productgridfilter/attributes_to_display'))
+            return;
 
-        //Si la collection est une collection Mage_Catalog_Model_Resource_Product_Collection on ajoute les valeurs de ce champ à la collection
+        //Si la collection est une collection Mage_Catalog_Model_Resource_Product_Collection on ajoute les valeurs de ces champs à la collection
         if (is_a($collection, 'Mage_Catalog_Model_Resource_Product_Collection')) {
-            $collection->addAttributeToSelect('reference');
+            
+            $fields = explode(',',Mage::getStoreConfig('system/hhennes_productgridfilter/attributes_to_display'));
+            
+            foreach ( $fields as $field)
+                $collection->addAttributeToSelect($field); //Le champ reference peu être remplacé par l'attribut existant de votre choix 
         }
     }
 
