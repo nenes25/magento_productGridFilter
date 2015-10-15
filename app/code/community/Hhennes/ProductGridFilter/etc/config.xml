@@ -41,6 +41,15 @@
                 </observers>
             </eav_collection_abstract_load_before>
         </events>
+        <translate>
+            <modules>
+                <Hhennes_ProductGridFilter>
+                    <files>
+                        <default>Hhennes_ProductGridFilter.csv</default>
+                    </files>
+                </Hhennes_ProductGridFilter>
+            </modules>
+        </translate>
     </adminhtml>
     
 </config>
