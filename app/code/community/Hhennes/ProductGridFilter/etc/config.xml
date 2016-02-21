@@ -4,7 +4,7 @@
  <!-- Configuration de base du Module -->
     <modules>
         <Hhennes_ProdutGridFilter>
-            <version>0.2.0</version>    
+            <version>0.3.0</version>    
         </Hhennes_ProdutGridFilter>
     </modules>
  
@@ -51,5 +51,11 @@
             </modules>
         </translate>
     </adminhtml>
-    
+    <default>
+        <system>
+            <hhennes_productgridfilter>
+                <category_status_filter>1</category_status_filter>
+            </hhennes_productgridfilter>
+        </system>
+    </default>
 </config>
