@@ -1,13 +1,5 @@
 <?php
 
-/**
- * Enter File description
- *
- * @author Europe-internet <dev@europe-internet.net>
- * @version 0.1 | $Revision$
- * Last-Modified : $Date$
- * Id : $Id$
- */
 class Hhennes_ProductGridFilter_Model_Source_Attributes {
     
     public function toOptionArray() {

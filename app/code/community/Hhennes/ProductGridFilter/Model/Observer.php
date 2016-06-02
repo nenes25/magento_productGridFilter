@@ -16,7 +16,7 @@ class Hhennes_ProductGridFilter_Model_Observer {
         
         if ( $block->getType() == 'adminhtml/catalog_category_tab_product' && Mage::getStoreConfig('system/hhennes_productgridfilter/category_status_filter') == 1) {
                         
-            //On ajoute les nouveaux champs après le champ SKU
+                //On ajoute les nouveaux champs après le champ SKU
                 $block->addColumnAfter('status', array(
                     'header' => Mage::helper('hhennes_productgridfilter')->__('status'),
                     'align' => 'left',
@@ -26,13 +26,21 @@ class Hhennes_ProductGridFilter_Model_Observer {
                     'width' => '70'
                     ),
                     'sku');
-                
                 $block->addColumnAfter('visibility', array(
                     'header' => Mage::helper('hhennes_productgridfilter')->__('visibility'),
                     'align' => 'left',
                     'index' => 'visibility',
                     'type' => 'options',
                     'options' => Mage::getModel('catalog/product_visibility')->getOptionArray(),
+                    'width' => '70'
+                    ),
+                    'sku');
+                $block->addColumnAfter('type_id', array(
+                    'header' => Mage::helper('hhennes_productgridfilter')->__('Type'),
+                    'align' => 'left',
+                    'index' => 'type_id',
+                    'type' => 'options',
+                    'options' => Mage::getSingleton('catalog/product_type')->getOptionArray(),
                     'width' => '70'
                     ),
                     'sku');
