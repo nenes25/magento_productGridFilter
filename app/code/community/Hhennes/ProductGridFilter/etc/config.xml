@@ -4,7 +4,7 @@
  <!-- Configuration de base du Module -->
     <modules>
         <Hhennes_ProdutGridFilter>
-            <version>0.3.0</version>    
+            <version>0.3.1</version>
         </Hhennes_ProdutGridFilter>
     </modules>
  
